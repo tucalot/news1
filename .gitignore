@@ -1,0 +1,70 @@
+# Arquivos do ambiente virtual Python
+venv/
+env/
+.venv/
+pip-selfcheck.json
+
+# Banco de dados SQLite (comum em desenvolvimento Django)
+*.sqlite3
+*.db
+*.db-journal
+
+# Arquivos de configuração do VSCode
+.vscode/
+
+# Arquivos de configuração do PyCharm
+.idea/
+*.iml
+
+# Arquivos de cache e temporários
+*.py[cod]
+__pycache__/
+.pytest_cache/
+.cache/
+*.egg-info/
+
+# Logs e arquivos de sistema
+*.log
+*.pot
+*.pid
+*.DS_Store
+*.swp
+*~
+.env
+
+# Arquivos de build e distribuição
+build/
+dist/
+*.egg
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos de documentação
+docs/_build/
+
+# Arquivos do pip
+pip-wheel-metadata/
+
+# Arquivos de testes
+htmlcov/
+.coverage
+.coverage.*
+.tox/
+.nox/
+test.db
+
+# Arquivos de configuração local (não versionados)
+local_settings.py
+settings/local.py
+
+# Arquivos do macOS
+.DS_Store
+
+# Arquivos do Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Arquivos do Node.js (caso tenha frontend)
+node_modules/
