@@ -1,0 +1,232 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O Liberal News Portal</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Menu -->
+    <header class="container">
+    <nav id="primary" class="grid grid-flow-col justify-between items-center">
+    <div id="menu-toggle" class="cursor-pointer">
+      <img src="{% static 'img/icons/List.svg' %}" alt="Menu List Icon" />
+      <strong>Menu</strong>
+    </div>
+
+    <div>
+      <img src="{% static 'Logo.svg' %}" alt="TechNews Logo" />
+    </div>
+
+    <div>
+      <strong>Buscar</strong>
+      <img src="{% static 'img/icons/MagnifyingGlass.svg' %}" alt="Search Icon" />
+    </div>
+  </nav>
+
+  <nav id="secondary" class="mobile-menu hidden flex-col">
+    <a href="#">Últimas Notícias</a>
+    <a href="#">Esportes</a>
+    <a href="#">Segurança</a>
+    <a href="#">Política</a>
+    <a href="#">Tecnologia</a>
+    <a href="#">Cultura</a>
+    <a href="#">Educação</a>
+  </nav>
+</header>
+
+
+    <main class="grid container">
+
+      <!--  Primeira seção de posts -->
+      <section id="featured" class="grid grid-flow-col gap-16">
+  {% for post in ultimas_publicacoes %}
+    <figure class="card">
+      {% if post.imagem %}
+        <img src="{{ post.imagem.url }}" alt="{{ post.titulo }}">
+      {% else %}
+        <img src="{% static 'img/images/default.png' %}" alt="Imagem padrão">
+      {% endif %}
+      <figcaption>
+        <span class="content-tag">{{ post.categoria|title }}</span>
+        <h2 class="{% if forloop.first %}text-2xl{% else %}text-lg{% endif %}">
+          {{ post.titulo|truncatechars:130 }}
+        </h2>
+      </figcaption>
+    </figure>
+  {% endfor %}
+</section>
+
+
+      <!-- Fim da primeira seção de posts -->
+
+
+      <!-- seção educação -->
+
+      <section id="weekly">
+  <header class="grid grid-flow-col">
+    <h3>Últimas notícias de Educação</h3>
+    <a href="#" class="grid grid-flow-col">
+      <strong>Ver tudo</strong>
+      <span></span>
+    </a>
+  </header>
+
+  <div class="grid gap-16">
+    {% for post in educacao %}
+      <figure>
+        <span class="content-tag">{{ post.categoria|title }}</span>
+        {% if post.imagem %}
+          <img src="{{ post.imagem.url }}" alt="{{ post.titulo }}">
+        {% endif %}
+        <p>{{ post.titulo|truncatechars:120 }}</p>
+      </figure>
+    {% endfor %}
+  </div>
+</section>
+
+
+      <!-- FIM seção de educação -->
+
+      <!-- Política Notícias -->
+
+        <section id="ai">
+        <header class="grid grid-flow-col">
+          <h3>Últimas notícias de Política</h3>
+        <a href="#" class="grid grid-flow-col">
+          <strong>Ver tudo</strong>
+          <span></span>
+        </a>
+      </header>
+
+      <div class="grid gap-32">
+      {% for post in politica %}
+        <article class="grid grid-flow-col gap-16">
+         <div>
+           <span class="content-tag">{{ post.categoria|title }}</span>
+           <h3 class="text-xl">
+             {{ post.titulo|truncatechars:110 }}
+           </h3>
+            <p class="text-sm">
+             {{ post.conteudo|truncatechars:300 }}
+          </p>
+        </div>
+        <div>
+          {% if post.imagem %}
+            <img src="{{ post.imagem.url }}" alt="{{ post.titulo }}">
+          {% else %}
+            <img src="{% static 'img/images/default.png' %}" alt="Imagem padrão">
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+      
+      <!--  Fim de Política Notícias -->
+
+
+      <aside>
+        <div id="ads">
+          <img src="{% static 'Ads.png' %}" alt="Ads" />
+        </div>
+        
+        <!-- Seção de destaques aside Tecnologia -->
+        
+        <section id="more">
+  <header class="grid grid-flow-col">
+    <h3>Viu isso aqui?</h3>
+    <a href="#" class="grid grid-flow-col">
+      <strong>Ver tudo</strong>
+      <span></span>
+    </a>
+  </header>
+
+  <div class="grid gap-32">
+    {% for post in tecnologia %}
+      <article class="grid grid-flow-col gap-16">
+        <div>
+          {% if post.imagem %}
+            <img src="{{ post.imagem.url }}" alt="{{ post.titulo }}">
+          {% else %}
+            <img src="{% static 'img/images/default.png' %}" alt="Imagem padrão">
+          {% endif %}
+        </div>
+
+        <div>
+          <span class="content-tag">{{ post.categoria|title }}</span>
+          <h3 class="text-xl">
+            {{ post.titulo|truncatechars:120 }}
+          </h3>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+
+       <!--  Fim de aside Tecnologia -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Contato</h3>
+      <p>Email: contato@seudominio.com</p>
+      <p>Telefone: (11) 1234-5678</p>
+      <p>Endereço: Rua Exemplo, 123 - SP</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Seções</h3>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Serviços</a></li>
+        <li><a href="#">Notícias</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Redes Sociais</h3>
+      <ul class="social">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 SeuSite. Todos os direitos reservados.</p>
+  </div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('secondary');
+
+    toggle.addEventListener('click', function () {
+      menu.classList.toggle('show');
+    });
+  });
+</script>
+
+  </body>
+</html>
