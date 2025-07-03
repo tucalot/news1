@@ -1,0 +1,89 @@
+/* Estilos padrão (desktop) */
+.footer {
+  background-color: #0f172a;
+  color: #eee;
+  padding: 40px 20px 20px;
+  font-family: 'Poppins', sans-serif;
+   border-top: 2px solid #fff; /* <- Linha branca acima do rodapé */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 14px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.footer-section a:hover {
+  color: #fff;
+}
+
+/* Responsivo: tablets (≤991px) */
+@media screen and (max-width: 991px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
+
+/* Responsivo: celulares (≤551px) */
+@media screen and (max-width: 551px) {
+  .footer {
+    padding: 30px 10px;
+  }
+
+  .footer-section h3 {
+    font-size: 16px;
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
+}
